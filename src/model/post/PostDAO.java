@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.common.JDBC;
-import model.post.PostVO;
 
 public class PostDAO {
 	
