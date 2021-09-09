@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import model.common.JDBC;
+import model.common.DBCP;
 
 public class PostDAO {
 	
@@ -26,7 +26,7 @@ public class PostDAO {
 	
 	// SELECT ALL -> 전체 글 정보 추출
 	public ArrayList<PostVO> SelectAll(){
-		Connection conn = JDBC.connect();
+		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
 
@@ -52,14 +52,14 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt, conn);
+			DBCP.disconnect(pstmt, conn);
 		}
 		return datas;
 	}
 
 	// SELECT ONE -> 글 보기
 	public PostVO SelectOne(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		PostVO data=null;
 		PreparedStatement pstmt=null;
 		try{
@@ -84,14 +84,14 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return data;
 	}
 	
 	// INSERT -> pnum, pdate, views, plike는 자동입력
 	public boolean InsertDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res = false;
 		PreparedStatement pstmt=null;
 		try{
@@ -109,14 +109,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// DELETE -> 포스트 삭제
 	public boolean DeleteDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -131,14 +131,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 
 	// UPDATE -> 카테고리, 제목, 내용 변경
 	public boolean UpdateDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -156,14 +156,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// 조회수 ++
 	public boolean ViewsUp(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -178,14 +178,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// 좋아요 ++
 	public boolean LikesUp(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -200,14 +200,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	// 좋아요 --
 	public boolean LikesDown(PostVO vo) {
 		
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -222,7 +222,7 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
