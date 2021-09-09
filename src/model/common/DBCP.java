@@ -8,7 +8,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class JDBC {
+public class DBCP {
 	
 	public static Connection connect() {
 		Connection conn = null;
