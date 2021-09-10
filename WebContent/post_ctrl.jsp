@@ -44,6 +44,7 @@
 		request.setAttribute("singlePost", PDAO.SelectOne(PVO));
 		pageContext.forward("showPost.jsp");
 	} else if (action.equals("insertPostDB")) {
+		// TODO writer colum 추가해야함
 		PVO.setCategory(request.getParameter("category"));
 		PVO.setContent(request.getParameter("content"));
 		UVO = (UserInfoVO)session.getAttribute("UVO");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
@@ -52,11 +53,14 @@
 		PDAO.InsertDB(PVO);
 		pageContext.forward("main.jsp");
 	} else if(action.equals("editPost")){
+		// TODO writer colum 추가해야함
 		PVO.setCategory(request.getParameter("category"));
 		PVO.setContent(request.getParameter("content"));
 		UVO = (UserInfoVO)session.getAttribute("UVO");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
 		PVO.setP_user(UVO.getName());
 		PVO.setTitle(request.getParameter("title"));
+		request.setAttribute("PostVO", PVO);			// 수정 정보를 담은 PostVO 를 PostVO로 넘겨줌
+		pageContext.forward("EditPost.jsp");
 	}
 %>
 <!DOCTYPE html>
