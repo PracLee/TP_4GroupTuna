@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="error.jsp" import="java.util.ArrayList, model.userInfo.UserInfoVO, model.comments.CommentsVO"%>
     
+<%
+	request.setCharacterEncoding("UTF-8");
+%>    
+
 <!-- 유저 빈즈클래스 -->
 <jsp:useBean id="userInfoDAO" class="model.userInfo.UserInfoDAO"/>
 <jsp:useBean id="userInfoVO" class="model.userInfo.UserInfoVO"/>
