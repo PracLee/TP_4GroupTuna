@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
+	pageEncoding="UTF-8" errorPage="error.jsp"
 	import="java.util.ArrayList, model.likeInfo.LikeInfoVO, model.post.PostVO, model.comments.CommentsVO, java.sql.Date, model.userInfo.UserInfoVO"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -47,7 +47,7 @@
 		// TODO writer colum 추가해야함
 		PVO.setCategory(request.getParameter("category"));
 		PVO.setContent(request.getParameter("content"));
-		UVO = (UserInfoVO)session.getAttribute("UVO");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
+		UVO = (UserInfoVO)session.getAttribute("userInfoData");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
 		PVO.setP_user(UVO.getName()); //ID? Name?
 		PVO.setTitle(request.getParameter("title"));
 		PDAO.InsertDB(PVO);
@@ -56,11 +56,25 @@
 		// TODO writer colum 추가해야함
 		PVO.setCategory(request.getParameter("category"));
 		PVO.setContent(request.getParameter("content"));
-		UVO = (UserInfoVO)session.getAttribute("UVO");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
+		UVO = (UserInfoVO)session.getAttribute("userInfoData");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
 		PVO.setP_user(UVO.getName());
 		PVO.setTitle(request.getParameter("title"));
 		request.setAttribute("PostVO", PVO);			// 수정 정보를 담은 PostVO 를 PostVO로 넘겨줌
 		pageContext.forward("EditPost.jsp");
+	}else if(action.equals("editPostDB")){
+		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
+		PVO.setCategory(request.getParameter("category"));
+		PVO.setTitle(request.getParameter("title"));
+		PVO.setContent(request.getParameter("content"));
+		PDAO.UpdateDB(PVO);
+		pageContext.forward("main.jsp");		
+	}else if(action.equals("deletePostDB")){
+		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
+		PDAO.DeleteDB(PVO);
+		pageContext.forward("main.jsp");
+	}else if(action.equals("like")){	// 세션에서 아이디 정보, request에서 글 정보, LikeInfo에서 좋아요 눌렀는지 확인
+		UVO = (UserInfoVO)session.getAttribute("userInfoData");
+		UVO.getId();
 	}
 %>
 <!DOCTYPE html>
