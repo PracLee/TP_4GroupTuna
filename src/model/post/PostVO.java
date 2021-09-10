@@ -9,7 +9,7 @@ public class PostVO {
 	private String category;
 	private String title;
 	private String content;
-	private Date pdate;
+	private String pdate;
 	private String p_user;
 	
 	public int getPnum() {
@@ -48,10 +48,10 @@ public class PostVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getPdate() {
+	public String getPdate() {
 		return pdate;
 	}
-	public void setPdate(Date pdate) {
+	public void setPdate(String pdate) {
 		this.pdate = pdate;
 	}
 	public String getP_user() {

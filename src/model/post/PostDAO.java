@@ -1,8 +1,10 @@
 package model.post;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import model.common.DBCP;
@@ -29,7 +31,9 @@ public class PostDAO {
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
-
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateOrigin;
+		String dateToStr;
 		try {
 			pstmt = conn.prepareStatement(sql_SELECT_ALL);
 			ResultSet rs = pstmt.executeQuery();
@@ -41,7 +45,9 @@ public class PostDAO {
 				vo.setCategory(rs.getString("category"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
-				vo.setPdate(rs.getDate("pdate"));
+				dateOrigin = rs.getDate("pdate");
+				dateToStr = dateFix.format(dateOrigin);
+				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
 				datas.add(vo);
 			}
@@ -62,6 +68,9 @@ public class PostDAO {
 		Connection conn=DBCP.connect();
 		PostVO data=null;
 		PreparedStatement pstmt=null;
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateOrigin;
+		String dateToStr;
 		try{
 			pstmt=conn.prepareStatement(sql_SELECT_ONE);
 			pstmt.setInt(1, vo.getPnum());
@@ -74,7 +83,9 @@ public class PostDAO {
 				data.setCategory(rs.getString("category"));
 				data.setTitle(rs.getString("title"));
 				data.setContent(rs.getString("content"));
-				data.setPdate(rs.getDate("pdate"));
+				dateOrigin = rs.getDate("pdate");
+				dateToStr = dateFix.format(dateOrigin);
+				vo.setPdate(dateToStr);
 				data.setP_user(rs.getString("p_user"));
 			}	
 			rs.close();
