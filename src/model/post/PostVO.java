@@ -1,5 +1,7 @@
+
 package model.post;
 
+import java.sql.Date;
 
 public class PostVO {
 	private int pnum;

@@ -1,12 +1,13 @@
 package model.post;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import model.common.JDBC;
-import model.post.PostVO;
+import model.common.DBCP;
 
 public class PostDAO {
 	
@@ -27,10 +28,12 @@ public class PostDAO {
 	
 	// SELECT ALL -> 전체 글 정보 추출
 	public ArrayList<PostVO> SelectAll(){
-		Connection conn = JDBC.connect();
+		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
-
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateOrigin;
+		String dateToStr;
 		try {
 			pstmt = conn.prepareStatement(sql_SELECT_ALL);
 			ResultSet rs = pstmt.executeQuery();
@@ -42,7 +45,9 @@ public class PostDAO {
 				vo.setCategory(rs.getString("category"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
-				vo.setPdate(rs.getDate("pdate"));
+				dateOrigin = rs.getDate("pdate");
+				dateToStr = dateFix.format(dateOrigin);
+				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
 				datas.add(vo);
 			}
@@ -53,16 +58,19 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt, conn);
+			DBCP.disconnect(pstmt, conn);
 		}
 		return datas;
 	}
 
 	// SELECT ONE -> 글 보기
 	public PostVO SelectOne(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		PostVO data=null;
 		PreparedStatement pstmt=null;
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateOrigin;
+		String dateToStr;
 		try{
 			pstmt=conn.prepareStatement(sql_SELECT_ONE);
 			pstmt.setInt(1, vo.getPnum());
@@ -75,7 +83,9 @@ public class PostDAO {
 				data.setCategory(rs.getString("category"));
 				data.setTitle(rs.getString("title"));
 				data.setContent(rs.getString("content"));
-				data.setPdate(rs.getDate("pdate"));
+				dateOrigin = rs.getDate("pdate");
+				dateToStr = dateFix.format(dateOrigin);
+				vo.setPdate(dateToStr);
 				data.setP_user(rs.getString("p_user"));
 			}	
 			rs.close();
@@ -85,14 +95,14 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return data;
 	}
 	
 	// INSERT -> pnum, pdate, views, plike는 자동입력
 	public boolean InsertDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res = false;
 		PreparedStatement pstmt=null;
 		try{
@@ -110,14 +120,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// DELETE -> 포스트 삭제
 	public boolean DeleteDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -132,14 +142,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 
 	// UPDATE -> 카테고리, 제목, 내용 변경
 	public boolean UpdateDB(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -157,14 +167,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// 조회수 ++
 	public boolean ViewsUp(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -179,14 +189,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// 좋아요 ++
 	public boolean LikesUp(PostVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -201,14 +211,14 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	// 좋아요 --
 	public boolean LikesDown(PostVO vo) {
 		
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -223,7 +233,7 @@ public class PostDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}

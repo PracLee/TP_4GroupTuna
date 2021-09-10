@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import model.common.JDBC;
+import model.common.DBCP;
 import model.likeInfo.LikeInfoVO;
 
 public class LikeInfoDAO {
@@ -21,7 +21,7 @@ public class LikeInfoDAO {
    
    // SELECT ALL -> 전체 좋아요 정보 추출
    public ArrayList<LikeInfoVO> SelectAll(){
-      Connection conn = JDBC.connect();
+      Connection conn = DBCP.connect();
       ArrayList<LikeInfoVO> datas = new ArrayList();
       PreparedStatement pstmt = null;
 
@@ -41,14 +41,14 @@ public class LikeInfoDAO {
          e.printStackTrace();
       }
       finally {
-         JDBC.disconnect(pstmt, conn);
+         DBCP.disconnect(pstmt, conn);
       }
       return datas;
    }
 
    // SELECT ONE -> boolean 타입, 있으면 true 아니면 false 반환.
    public boolean SelectOne(LikeInfoVO vo) {
-      Connection conn=JDBC.connect();
+      Connection conn=DBCP.connect();
       PreparedStatement pstmt=null;
       boolean res = false;
       try{
@@ -66,14 +66,14 @@ public class LikeInfoDAO {
          e.printStackTrace();
       }
       finally {
-         JDBC.disconnect(pstmt,conn);
+         DBCP.disconnect(pstmt,conn);
       }
       return res;
    }
    
    // INSERT -> 좋아요 정보 저장
    public boolean InsertDB(LikeInfoVO vo) {
-      Connection conn=JDBC.connect();
+      Connection conn=DBCP.connect();
       boolean res = false;
       PreparedStatement pstmt=null;
       try{
@@ -89,14 +89,14 @@ public class LikeInfoDAO {
          //res=false;
       }
       finally {
-         JDBC.disconnect(pstmt,conn);
+         DBCP.disconnect(pstmt,conn);
       }
       return res;
    }
    
    // DELETE -> 좋아요 취소
    public boolean DeleteDB(LikeInfoVO vo) {
-      Connection conn=JDBC.connect();
+      Connection conn=DBCP.connect();
       boolean res=false;
       PreparedStatement pstmt=null;
       try{
@@ -112,7 +112,7 @@ public class LikeInfoDAO {
          //res=false;
       }
       finally {
-         JDBC.disconnect(pstmt,conn);
+         DBCP.disconnect(pstmt,conn);
       }
       return res;
    }
@@ -120,7 +120,7 @@ public class LikeInfoDAO {
    /*
    // UPDATE -> 카테고리, 제목, 내용 변경
    public boolean UpdateDB(LikeInfoVO vo) {
-      Connection conn=JDBC.connect();
+      Connection conn=DBCP.connect();
       boolean res=false;
       PreparedStatement pstmt=null;
       try{
@@ -136,7 +136,7 @@ public class LikeInfoDAO {
          //res=false;
       }
       finally {
-         JDBC.disconnect(pstmt,conn);
+         DBCP.disconnect(pstmt,conn);
       }
       return res;
    }

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import model.common.JDBC;
+import model.common.DBCP;
 import model.userInfo.UserInfoVO;
 
 public class UserInfoDAO {
@@ -18,7 +18,7 @@ public class UserInfoDAO {
 	
 	// SELECT ALL -> 전체 DB정보 추출
 	public ArrayList<UserInfoVO> SelectAll(){
-		Connection conn = JDBC.connect();
+		Connection conn = DBCP.connect();
 		ArrayList<UserInfoVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
 
@@ -39,14 +39,14 @@ public class UserInfoDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt, conn);
+			DBCP.disconnect(pstmt, conn);
 		}
 		return datas;
 	}
 
 	// SELECT ONE -> 로그인 
 	public UserInfoVO SelectOne(UserInfoVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
 		PreparedStatement pstmt=null;
 		try{
@@ -67,14 +67,14 @@ public class UserInfoDAO {
 			e.printStackTrace();
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return data;
 	}
 	
 	// INSERT -> 회원가입
 	public boolean InsertDB(UserInfoVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res = false;
 		PreparedStatement pstmt=null;
 		try{
@@ -91,14 +91,14 @@ public class UserInfoDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 	
 	// DELETE -> 회원 탈퇴
 	public boolean DeleteDB(UserInfoVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -113,14 +113,14 @@ public class UserInfoDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
 
 	// UPDATE -> Name, Pw 변경
 	public boolean UpdateDB(UserInfoVO vo) {
-		Connection conn=JDBC.connect();
+		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
@@ -137,7 +137,7 @@ public class UserInfoDAO {
 			//res=false;
 		}
 		finally {
-			JDBC.disconnect(pstmt,conn);
+			DBCP.disconnect(pstmt,conn);
 		}
 		return res;
 	}
