@@ -59,12 +59,14 @@
 		UVO = (UserInfoVO)session.getAttribute("userInfoData");	// 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
 		PVO.setP_user(UVO.getName());
 		PVO.setTitle(request.getParameter("title"));
+		PVO.setPlike(Integer.parseInt(request.getParameter("plike")));
 		request.setAttribute("PostVO", PVO);			// 수정 정보를 담은 PostVO 를 PostVO로 넘겨줌
 		pageContext.forward("EditPost.jsp");
 	}else if(action.equals("editPostDB")){
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		PVO.setCategory(request.getParameter("category"));
-		PVO.setTitle(request.getParameter("title"));
+		PVO.setTitle(request.getParameter("title"));;
+		PVO.setPlike(Integer.parseInt(request.getParameter("plike")));
 		PVO.setContent(request.getParameter("content"));
 		PDAO.UpdateDB(PVO);
 		pageContext.forward("main.jsp");		
@@ -75,6 +77,8 @@
 	}else if(action.equals("like")){	// 세션에서 아이디 정보, request에서 글 정보, LikeInfo에서 좋아요 눌렀는지 확인
 		UVO = (UserInfoVO)session.getAttribute("userInfoData");
 		UVO.getId();
+	}else if(action.equals("")){
+		
 	}
 %>
 <!DOCTYPE html>
