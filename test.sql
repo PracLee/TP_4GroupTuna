@@ -13,6 +13,7 @@ CREATE TABLE post(
 	category varchar(30),
 	title varchar(100),
 	content varchar(4000),
+	writer varchar(30),
 	pdate date default sysdate,
 	p_user varchar(30),
 	foreign key (p_user) references userInfo(id) on delete cascade

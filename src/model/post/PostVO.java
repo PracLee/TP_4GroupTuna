@@ -9,9 +9,16 @@ public class PostVO {
 	private String category;
 	private String title;
 	private String content;
+	private String writer;
 	private String pdate;
 	private String p_user;
 	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public int getPnum() {
 		return pnum;
 	}
@@ -63,8 +70,10 @@ public class PostVO {
 	@Override
 	public String toString() {
 		return "PostVO [pnum=" + pnum + ", views=" + views + ", plike=" + plike + ", category=" + category + ", title="
-				+ title + ", content=" + content + ", pdate=" + pdate + ", p_user=" + p_user + "]";
+				+ title + ", content=" + content + ", writer=" + writer + ", pdate=" + pdate + ", p_user=" + p_user
+				+ "]";
 	}
+	
 	
 	
 	
