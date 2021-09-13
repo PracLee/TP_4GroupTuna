@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" errorPage="error.jsp"
 	import="java.util.ArrayList, model.likeInfo.LikeInfoVO, model.post.PostVO, model.comments.CommentsVO, java.sql.Date, model.userInfo.UserInfoVO"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
+
 <jsp:useBean id="PVO" class="model.post.PostVO" />
 <jsp:useBean id="PDAO" class="model.post.PostDAO" />
 <jsp:useBean id="LVO" class="model.likeInfo.LikeInfoVO" />
