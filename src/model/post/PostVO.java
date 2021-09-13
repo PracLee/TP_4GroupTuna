@@ -1,3 +1,4 @@
+
 package model.post;
 
 import java.sql.Date;
@@ -73,9 +74,4 @@ public class PostVO {
 				+ title + ", content=" + content + ", writer=" + writer + ", pdate=" + pdate + ", p_user=" + p_user
 				+ "]";
 	}
-	
-	
-	
-	
-	
 }
