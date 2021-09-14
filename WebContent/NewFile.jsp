@@ -36,18 +36,15 @@
 		  	PVO.setTitle(multi.getParameter("title"));
 		  	PVO.setViews(Integer.parseInt(multi.getParameter("views")));
 		  	
-		  System.out.println("filename1 = " + filename1);
 		 } catch(Exception e) {
 		  e.printStackTrace();
 		 }
 		 realFolder = "img";
 		 String fullpath = realFolder + "/" + filename1;
 		 System.out.println("fullpath = " + fullpath);
-		 messageVO.setPath(fullpath);
-		 System.out.println("messageVO = " + messageVO);
-		 System.out.println("messagePath = " + messageVO.getPath());
+		 PVO.setPath(fullpath);
 		
-		if(messageDAO.insertDB(messageVO)){
+		if(PDAO.insertDB(PVO)){
 			// 같은 페이지의 다른 곳으로 이동할 때는 주로 redirect 방식을 이용함 -> spring에서 자세히
 			response.sendRedirect("control.jsp?action=list");
 		}
