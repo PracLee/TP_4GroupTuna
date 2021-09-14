@@ -13,6 +13,7 @@ public class PostVO {
 	private String writer;
 	private String pdate;
 	private String p_user;
+	private String path;
 	
 	public String getWriter() {
 		return writer;
@@ -67,6 +68,13 @@ public class PostVO {
 	}
 	public void setP_user(String p_user) {
 		this.p_user = p_user;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	@Override
 	public String toString() {

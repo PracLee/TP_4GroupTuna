@@ -15,10 +15,10 @@ public class PostDAO {
 	private static String sql_SELECT_ALL = "SELECT * FROM post";
 	private static String sql_SELECT_ONE = "SELECT * FROM post WHERE pnum=?";
 	private static String sql_INSERT = 
-			"INSERT INTO post (pnum, category, title, content, writer, p_user"
-			+ " VALUES((SELECT NVL(MAX(pnum),0) + 1 FROM post), ?, ?, ?, ?, ?)";
+			"INSERT INTO post (pnum, category, title, content, writer, p_user, path)"
+			+ " VALUES((SELECT NVL(MAX(pnum),0) + 1 FROM post), ?, ?, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM post WHERE pnum=?";
-	private static String sql_UPDATE = "UPDATE post SET category=?, title=?, content=?, writer=?, pdate=sysdate WHERE pnum=?";
+	private static String sql_UPDATE = "UPDATE post SET category=?, title=?, content=?, writer=?, path=?, pdate=sysdate WHERE pnum=?";
 	
 	// 사용자 정의 함수
 	// 조회수 업, 좋아요 업 다운
@@ -57,6 +57,7 @@ public class PostDAO {
 				dateToStr = dateFix.format(dateOrigin);
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
+				vo.setPath(rs.getString("path"));
 				datas.add(vo);
 			}
 			rs.close();
@@ -94,8 +95,9 @@ public class PostDAO {
 				data.setWriter(rs.getString("writer"));
 				dateOrigin = rs.getDate("pdate");
 				dateToStr = dateFix.format(dateOrigin);
-				vo.setPdate(dateToStr);
+				data.setPdate(dateToStr);
 				data.setP_user(rs.getString("p_user"));
+				data.setPath(rs.getString("path"));
 			}	
 			rs.close();
 		}
@@ -121,6 +123,7 @@ public class PostDAO {
 			pstmt.setString(3, vo.getContent());
 			pstmt.setString(4, vo.getWriter());
 			pstmt.setString(5, vo.getP_user());
+			pstmt.setString(6, vo.getPath());
 			pstmt.executeUpdate();
 			res=true;
 		}
@@ -168,7 +171,8 @@ public class PostDAO {
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getContent());
 			pstmt.setString(4, vo.getWriter());
-			pstmt.setInt(5, vo.getPnum());
+			pstmt.setString(5,  vo.getPath());
+			pstmt.setInt(6, vo.getPnum());
 			pstmt.executeUpdate();
 			res=true;
 		}

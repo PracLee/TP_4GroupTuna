@@ -16,6 +16,7 @@ CREATE TABLE post(
 	writer varchar(30),
 	pdate date default sysdate,
 	p_user varchar(30),
+	path varchar(1000),
 	foreign key (p_user) references userInfo(id) on delete cascade
 );
 
