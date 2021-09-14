@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, model.post.*"
-    errorPage="error.jsp"%>
-<%@ page import="com.oreilly.servlet.MultipartRequest,com.oreilly.servlet.multipart.DefaultFileRenamePolicy,java.util.*,java.io.*" %>
-<%@ page import="java.sql.*" %>
+	pageEncoding="UTF-8" import="java.util.*, model.post.*"
+	errorPage="error.jsp"%>
+<%@ page
+	import="com.oreilly.servlet.MultipartRequest,com.oreilly.servlet.multipart.DefaultFileRenamePolicy,java.util.*,java.io.*"%>
+<%@ page import="java.sql.*"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<jsp:useBean id="PDAO" class="model.post.PostDAO"/>
-<jsp:useBean id="PVO" class="model.post.PostVO"/>
+<jsp:useBean id="PDAO" class="model.post.PostDAO" />
+<jsp:useBean id="PVO" class="model.post.PostVO" />
 <% 
  // 파일 경로, 이름
 		 String realFolder = "";
@@ -26,11 +27,15 @@
 		  Enumeration<?> files = multi.getFileNames(); 
 		  String file1 = (String)files.nextElement();
 		  filename1 = multi.getFilesystemName(file1);
-		  PVO.setWriter(multi.getParameter("writer"));
-		  PVO.setTitle(multi.getParameter("title"));
-		  PVO.setContent(multi.getParameter("content"));
-		  PVO.set(Integer.parseInt(multi.getParameter("member")));
-		  
+			PVO.setCategory(multi.getParameter("category"));
+		  	PVO.setContent(multi.getParameter("content"));
+		  	PVO.setP_user(multi.getParameter("p_user"));
+		  	PVO.setPdate(multi.getParameter("pdate"));
+		  	PVO.setPlike(Integer.parseInt(multi.getParameter("plike")));
+		  	PVO.setPnum(Integer.parseInt(multi.getParameter("pnum")));
+		  	PVO.setTitle(multi.getParameter("title"));
+		  	PVO.setViews(Integer.parseInt(multi.getParameter("views")));
+		  	
 		  System.out.println("filename1 = " + filename1);
 		 } catch(Exception e) {
 		  e.printStackTrace();
