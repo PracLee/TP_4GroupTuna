@@ -44,7 +44,7 @@
 		 System.out.println("fullpath = " + fullpath);
 		 PVO.setPath(fullpath);
 		
-		if(PDAO.insertDB(PVO)){
+		if(PDAO.InsertDB(PVO)){
 			// 같은 페이지의 다른 곳으로 이동할 때는 주로 redirect 방식을 이용함 -> spring에서 자세히
 			response.sendRedirect("control.jsp?action=list");
 		}
