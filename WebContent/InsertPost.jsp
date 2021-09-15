@@ -34,7 +34,7 @@ https://templatemo.com/tm-553-xtra-blog
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                    <li class="tm-nav-item active"><a href="posting.jsp" class="tm-nav-link">
+                    <li class="tm-nav-item active"><a href="InsertPost.jsp" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
@@ -42,9 +42,9 @@ https://templatemo.com/tm-553-xtra-blog
                         <i class="fas fa-users"></i>
                         Login /	Sign-up
                     </a></li>
-                    <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
                         <i class="far fa-comments"></i>
-                        Contact Us
+                        Category / 임시
                     </a></li>
                 </ul>
             </nav>
@@ -92,7 +92,9 @@ https://templatemo.com/tm-553-xtra-blog
                 <div class="col-12">                    
                     <div class="mb-4">
                         <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title" class="lmargin">포스팅하기</h2>
-                        <form action="index.jsp" style="display:block; width:1000px;" class="mb-5 ctext" >
+                        <form action="post_ctrl.jsp?action=insertPostDB" method="post" style="display:block; width:1000px;" class="mb-5 ctext" >
+						<input type="hidden" name="writer" value="${userInfoData.name}">
+						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">						
 							<input class="form-control" style="width:100%; border-color:white; font-size:25px;" name="title" type="text" placeholder="제목을 입력하세요">
 							
@@ -100,14 +102,17 @@ https://templatemo.com/tm-553-xtra-blog
 						 <hr class="tm-hr-mycss">												
 						<div class="mb-4">
 						<label class="col-sm-3 col-form-label tm-color-primary">내용</label>
-                                <textarea class="form-control mr-0 ml-auto" name="message" id="message" rows="8" required style="height:800px;"></textarea>                                
+                                <textarea class="form-control mr-0 ml-auto" name="content" id="message" rows="8" required style="height:800px;"></textarea>                                
                             </div>
                         <div class="mb-4">
 						<label  class=" col-form-label tm-color-primary" style="font-size:28px;">category</label>							
 							<select name="category">
-								<option>치킨</option>
+								<option selected>치킨</option>
 								<option>피자</option>
 								<option>햄버거</option>
+								<option>한식</option>
+								<option>중식</option>
+								<option>일식</option>
 							</select>
 						</div>    
 						<div class="text-right">

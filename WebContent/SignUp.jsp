@@ -124,18 +124,18 @@
 				<h2 style="color:#D25A53;">회원가입</h2>
 				<br>
 				<!-- signUp form -->
-				<form action="index.jsp" style="display: inline-block;"
+				<form action="userComment_Ctrl.jsp?action=signUp" method="post" style="display: inline-block;"
 					class="mb-5 tm-comment-form">
 					<div class="mb-4">
 						<span class="signupt">아이디</span> <input class="form-control" style="width: 360px"
-							name="ID" type="text" placeholder="ID">
+							name="id" type="text" placeholder="ID">
 					</div>
 					<div class="mb-4">
-						<span class="signupt">비밀번호</span> <input class="form-control" name="PW"
+						<span class="signupt">비밀번호</span> <input class="form-control" name="pw"
 							type="password" placeholder="PW">
 					</div>
 					<div class="mb-4">
-						<span class="signupt">비밀번호 확인</span> <input class="form-control" name="PW"
+						<span class="signupt">비밀번호 확인</span> <input class="form-control" name="pw"
 							type="password" placeholder="PW">
 					</div>
 					<div class="mb-4">
@@ -166,8 +166,8 @@
 							value="동의">동의</label> <label><input type="radio"
 							id="noneCheck" name="check" value="비동의" checked="checked">비동의</label>
 					</div>
-					<div class="text-right">
-				<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">sign-up</button>				
+					<div class="text-right">					
+				<button type="submit"  class="tm-btn tm-btn-primary tm-btn-small">sign-up</button>				
 			</div>
 			</form>
 			</div>			

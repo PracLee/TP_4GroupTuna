@@ -85,18 +85,21 @@ https://templatemo.com/tm-553-xtra-blog
 				<hr class="tm-hr-primary tm-mb-55">
 				<!-- login form -->
 								
-					<form action="index.jsp" style="display:inline-block;" class="mb-5 tm-comment-form" >
+					<form action="userComment_Ctrl.jsp?action=joinUs" method="post" style="display:inline-block;" class="mb-5 tm-comment-form" >
 						<div class="mb-4">
-							<input class="form-control lwidth" style="width:360px" name="ID" type="text" placeholder="ID">
+							<input class="form-control lwidth" style="width:360px" name="id" type="text" placeholder="ID">
 						</div>
 						<div class="mb-4">
-							<input class="form-control" name="PW" type="password" placeholder="PW">
+							<input class="form-control" name="pw" type="password" placeholder="PW">
 						</div>
 						<div class="text-right">
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">login</button>
 						</div>
-					</form>					
-				
+						<div class="mb-4">
+							<a style="text-align:left;" href="#">id/pw찾기</a>
+							<a class="text-right" href="SignUp.jsp">회원가입</a>
+						</div>
+					</form>									
 			</div>
 		</div>
 		
