@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	pageContext.forward("userComment_Ctrl.jsp?action=main");
+	pageContext.forward("post_ctrl.jsp?action=main");
 %>
