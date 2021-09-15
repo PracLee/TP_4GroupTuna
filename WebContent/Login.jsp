@@ -5,22 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xtra Blog</title>
+<title>Login</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
-	rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon2.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- https://fonts.google.com/ -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-<!--
-    
-TemplateMo 553 Xtra Blog
-
-https://templatemo.com/tm-553-xtra-blog
-
--->
+<style type="text/css">
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}	
+.mlogo{
+    width:220px;
+    }
+</style>
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -35,21 +38,23 @@ https://templatemo.com/tm-553-xtra-blog
             </div>
 			<nav class="tm-nav" id="tm-nav">			
 				<ul>
-					<li class="tm-nav-item"><a href="index.html"
-						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-					</a></li>
-					<li class="tm-nav-item"><a href="posting.jsp"
-						class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-					</a></li>
-					<li class="tm-nav-item active"><a href="about.html"
-						class="tm-nav-link"> <i class="fas fa-users"></i> Login /
-							Sign-up
-					</a></li>
-					<li class="tm-nav-item"><a href="contact.html"
-						class="tm-nav-link"> <i class="far fa-comments"></i> Contact
-							Us
-					</a></li>
-				</ul>
+                    <li class="tm-nav-item"><a href="userComment_Ctrl.jsp?action=main" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        Blog Home
+                    </a></li>
+                    <li class="tm-nav-item"><a href="InsertPost.jsp" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Posting
+                    </a></li>
+                    <li class="tm-nav-item active"><a href="Login.jsp" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Login / Sign-up
+                    </a></li>
+                    <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        Category / 임시
+                    </a></li>
+                </ul>
 			</nav>
 			<div class="tm-mb-65">
 				<a href="https://facebook.com" class="tm-social-link"> <i

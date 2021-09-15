@@ -6,19 +6,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Xtra Blog</title>
-	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	<title>main</title>
+	 <!-- https://fonts.google.com/ -->
+	 <link rel="stylesheet" href="fontawesome/css/all.min.css">
+	 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon2.ico">
-<!--
-    
-TemplateMo 553 Xtra Blog
-
-https://templatemo.com/tm-553-xtra-blog
-
--->
+<style type="text/css">
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;   
+}	
+.mlogo{
+    width:220px;
+    }
+</style>
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -27,7 +32,7 @@ https://templatemo.com/tm-553-xtra-blog
                 <i class="fas fa-bars"></i>
             </button>
             <div class="tm-site-header">
-                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" style="width:220px;"></div>            
+                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" class="mlogo"></div>            
                 
             </div>
             <nav class="tm-nav" id="tm-nav">            
@@ -84,7 +89,7 @@ https://templatemo.com/tm-553-xtra-blog
             <c:forEach var="pl" items="${PostList}">
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
-                    <a href="post_ctrl.jsp?action=selectOne" class="effect-lily tm-post-link tm-pt-60">
+                    <a href="post_ctrl.jsp?action=selectOne&pnum=${pl/pnum}" class="effect-lily tm-post-link tm-pt-60">
                         <div class="tm-post-link-inner">
                             <img src="img/img-05.jpg" alt="Image" class="img-fluid">                            
                         </div>
