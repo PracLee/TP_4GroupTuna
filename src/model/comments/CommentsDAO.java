@@ -63,7 +63,7 @@ public class CommentsDAO {
 				data=new CommentsVO();
 				data.setCnum(rs.getInt("cnum"));
 				data.setCment(rs.getString("cment"));
-				data.setCdate(rs.getDate("name"));
+				data.setCdate(rs.getDate("cdate"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 			}	
@@ -161,7 +161,7 @@ public class CommentsDAO {
 				CommentsVO data = new CommentsVO();
 				data.setCnum(rs.getInt("cnum"));
 				data.setCment(rs.getString("cment"));
-				data.setCdate(rs.getDate("name"));
+				data.setCdate(rs.getDate("cdate"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 				datas.add(vo);
